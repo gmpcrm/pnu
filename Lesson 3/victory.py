@@ -35,26 +35,30 @@ def date_to_text(date_str):
     return f"{int(day)} {months[month]} {year} года"
 
 
-# Викторина
-while True:
-    selected_celebrities = random.sample(list(celebrities.items()), 5)
-    correct_count = 0
+def main():
+    while True:
+        selected_celebrities = random.sample(list(celebrities.items()), 5)
+        correct_count = 0
 
-    for name, birth_date in selected_celebrities:
-        user_input = input(f"Введите дату рождения {name} в формате 'dd.mm.yyyy': ")
-        if user_input == birth_date:
-            correct_count += 1
-        else:
-            print(f"Неправильно! Правильный ответ: {date_to_text(birth_date)}")
+        for name, birth_date in selected_celebrities:
+            user_input = input(f"Введите дату рождения {name} в формате 'dd.mm.yyyy': ")
+            if user_input == birth_date:
+                correct_count += 1
+            else:
+                print(f"Неправильно! Правильный ответ: {date_to_text(birth_date)}")
 
-    total_questions = len(selected_celebrities)
-    incorrect_count = total_questions - correct_count
-    correct_percentage = (correct_count / total_questions) * 100
+        total_questions = len(selected_celebrities)
+        incorrect_count = total_questions - correct_count
+        correct_percentage = (correct_count / total_questions) * 100
 
-    print(f"Количество правильных ответов: {correct_count}")
-    print(f"Количество неправильных ответов: {incorrect_count}")
-    print(f"Процент правильных ответов: {correct_percentage:.2f}%")
+        print(f"Количество правильных ответов: {correct_count}")
+        print(f"Количество неправильных ответов: {incorrect_count}")
+        print(f"Процент правильных ответов: {correct_percentage:.2f}%")
 
-    restart = input("Хотите начать заново? (да/нет): ").strip().lower()
-    if restart != "да":
-        break
+        restart = input("Хотите начать заново? (да/нет): ").strip().lower()
+        if restart != "да":
+            break
+
+
+if __name__ == "__main__":
+    main()
